@@ -1,27 +1,49 @@
-# ParadisulPufos
+## Instrucțiuni pentru rularea aplicației Angular "Paradisul Pufos"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+### Cerințe
+ TREBUIE INSTALATE:
+- Visual Studio Code (VS Code)
+- Node.js și npm
+- Angular CLI
 
-## Development server
+### Pași pentru rularea aplicației
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Instalează Visual Studio Code**:
+   - Descarcă și instalează VS Code de pe [site-ul oficial](https://code.visualstudio.com/).
 
-## Code scaffolding
+2. **Instalează Node.js**:
+   - Descarcă și instalează Node.js de pe [site-ul oficial](https://nodejs.org/).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. **Instalează Angular CLI**:
+   - Deschide un terminal și execută comanda:
+     ```bash
+     npm install -g @angular/cli
+     ```
 
-## Build
+4. **Clonează repository-ul de pe GitHub**:
+   - Deschide Git Bash sau un terminal și execută comanda:
+     ```bash
+     git clone https://github.com/nume-utilizator/nume-repository.git
+     ```
+   - Înlocuiește `nume-utilizator` și `nume-repository` cu valorile corespunzătoare.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+5. **Deschide proiectul în VS Code**:
+   - Navighează la folderul proiectului și deschide-l în VS Code.
 
-## Running unit tests
+6. **Instalează dependențele**:
+   - În VS Code, deschide un terminal nou și navighează la directorul proiectului.
+   - Execută comanda:
+     ```bash
+     npm install
+     ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7. **Rulează aplicația**:
+   - Deschide Git Bash sau terminalul în VS Code.
+   - Navighează la directorul proiectului.
+   - Execută comanda:
+     ```bash
+     ng serve
+     ```
+   - Deschide browser-ul și accesează [http://localhost:4200/](http://localhost:4200/).
+  
+     Link repository:https://github.com/adelina233/Licenta_Novac_Adelina_Paradisul_Pufos_Aplicatie_Web_pentru_Adoptii_de_Animale_Info_Zi
