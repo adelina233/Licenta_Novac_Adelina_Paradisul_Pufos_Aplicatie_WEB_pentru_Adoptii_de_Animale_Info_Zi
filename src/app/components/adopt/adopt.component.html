@@ -1,0 +1,238 @@
+<div class="page">
+  <div class="container block-padding pt-0 pb-0">
+    <div class="col-lg-8 offset-lg-2 text-center">
+      <h3>Găsește-ți un nou prieten!</h3>
+      <p>
+        Dacă ești în căutarea unui nou prieten animal, adăpostul nostru este
+        locul!
+      </p>
+    </div>
+
+    <!-- Filtrare -->
+    <div class="row mt-3">
+      <div class="col-md-3">
+        <label for="ageFilter">Vârstă:</label>
+        <input
+          type="number"
+          id="ageFilter"
+          class="form-control"
+          [(ngModel)]="ageFilter"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="vaccinatedFilter">Vaccinat:</label>
+        <select
+          id="vaccinatedFilter"
+          class="form-control"
+          [(ngModel)]="vaccinatedFilter"
+        >
+          <option [ngValue]="null">Toate</option>
+          <option [ngValue]="true">Da</option>
+          <option [ngValue]="false">Nu</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="animalTypeFilter">Tip de animal:</label>
+        <input
+          type="text"
+          id="animalTypeFilter"
+          class="form-control"
+          [(ngModel)]="animalTypeFilter"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="breedFilter">Rasa:</label>
+        <input
+          type="text"
+          id="breedFilter"
+          class="form-control"
+          [(ngModel)]="breedFilter"
+        />
+      </div>
+      <!-- <div>
+        <button class="btn btn-secondary" (click)="applyFilters()">
+          Aplica filtre
+        </button>
+      </div> -->
+    </div>
+
+    <!-- First row: Adopt a pet -->
+    <div class="row mt-5">
+      <!-- Pet  -->
+      <div class="col-12 text-right mb-3">
+        <button
+          class="btn btn-secondary"
+          *ngIf="authService.user$ | async"
+          (click)="openAddAdoptDialog()"
+        >
+          Adaugă un animal
+        </button>
+      </div>
+
+      <ng-container *ngFor="let adopt of paginatedAdoptList">
+        <div
+          *ngIf="adopt.isAccepted && !(authService.isAdmin$ | async)"
+          class="adopt-card col-md-6 col-xl-3 res-margin"
+        >
+          <div style="height: 600px" class="card bg-light-custom">
+            <div class="thumbnail text-center">
+              <!-- Image -->
+              <img
+                [src]="
+                  adopt.imageUrl || '../../../assets/img/adoption/default.jpg'
+                "
+                class="border-irregular1 img-fluid"
+                style="height: 230px"
+                alt="{{ adopt.name }}"
+              />
+              <div class="caption-adoption">
+                <h6 class="adoption-header">{{ adopt.name }}</h6>
+                <ul class="list-unstyled">
+                  <li><strong>Gen:</strong> {{ adopt.gender }}</li>
+                  <li>
+                    <strong>Vaccinat: </strong>
+                    {{ adopt.vaccinated ? "Da" : "Nu" }}
+                  </li>
+                  <li><strong>Vârstă:</strong> {{ adopt.age }} săptămâni</li>
+                </ul>
+                <div class="text-center">
+                  <a
+                    [routerLink]="['/adopt-single', adopt.id]"
+                    class="btn btn-primary"
+                    >Mai multe informații</a
+                  >
+                  <div *ngIf="authService.user$ | async">
+                    <ng-container
+                      *ngIf="
+                        (favoriteIds$ | async)!.includes(adopt.id);
+                        else addToFav
+                      "
+                    >
+                      <button
+                        class="btn btn-danger"
+                        (click)="removeFromFavorites(adopt.id)"
+                      >
+                        Elimină de la favorite
+                      </button>
+                    </ng-container>
+                  </div>
+                  <ng-template #addToFav>
+                    <button
+                      class="btn btn-secondary"
+                      (click)="addToFavorites(adopt.id)"
+                    >
+                      Adaugă la favorite
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="authService.isAdmin$ | async"
+          class="adopt-card col-md-6 col-xl-3 res-margin"
+        >
+          <div
+            class="card bg-light-custom"
+            style="height: 700px"
+            *ngIf="authService.isAdmin$ | async"
+          >
+            <div class="thumbnail text-center">
+              <!-- Image -->
+              <div>
+                <img
+                  [src]="
+                    adopt.imageUrl || '../../../assets/img/adoption/default.jpg'
+                  "
+                  class="border-irregular1 img-fluid"
+                  style="height: 230px"
+                  alt="{{ adopt.name }}"
+                />
+              </div>
+              <div class="caption-adoption">
+                <h6 class="adoption-header">{{ adopt.name }}</h6>
+                <ul class="list-unstyled">
+                  <li><strong>Gen:</strong> {{ adopt.gender }}</li>
+                  <li>
+                    <strong>Vaccinat: </strong>
+                    {{ adopt.vaccinated ? "Da" : "Nu" }}
+                  </li>
+                  <li><strong>Vârstă:</strong> {{ adopt.age }} săptămâni</li>
+                </ul>
+                <div class="text-center" style="bottom: 10px">
+                  <a
+                    [routerLink]="['/adopt-single', adopt.id]"
+                    class="btn btn-primary"
+                    >Mai multe informații</a
+                  >
+
+                  <button
+                    class="btn btn-secondary"
+                    *ngIf="
+                      (authService.isAdmin$ | async) &&
+                      (authService.user$ | async)
+                    "
+                    (click)="openEditAdoptDialog(adopt)"
+                  >
+                    Editeaza
+                  </button>
+                  <button
+                    class="btn btn-success"
+                    *ngIf="
+                      (authService.isAdmin$ | async) &&
+                      !adopt.isAccepted &&
+                      (authService.user$ | async)
+                    "
+                    (click)="acceptAdopt(adopt)"
+                  >
+                    Acceptă anunțul
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    *ngIf="
+                      (authService.isAdmin$ | async) &&
+                      (authService.user$ | async)
+                    "
+                    (click)="deleteAdopt(adopt)"
+                  >
+                    Șterge anunțul
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!-- /row -->
+
+      <div class="col-md-12 mt-5">
+        <!-- pagination -->
+        <nav aria-label="pagination">
+          <ul class="pagination float-right">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="changePage(currentPage - 1)">
+                Înapoi
+              </a>
+            </li>
+            <li
+              *ngFor="let page of [].constructor(totalPages); let i = index"
+              class="page-item"
+              [class.active]="currentPage === i + 1"
+            >
+              <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)">
+                Înainte
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /nav -->
+      </div>
+      <!-- /col-md -->
+    </div>
+    <!-- /container -->
+  </div>
+</div>

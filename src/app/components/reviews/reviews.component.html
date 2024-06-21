@@ -1,0 +1,89 @@
+<div class="container bottom-block-padding">
+  <h3 class="text-center">Ce spun clienții noștri</h3>
+  <button class="btn btn-secondary" (click)="openAddReviewDialog()">
+    Adauga review
+  </button>
+  <div class="col-md-12 mt-5">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <div
+        id="owl-testimonial"
+        class="owl-carousel owl-theme"
+        *ngFor="let review of paginatedReviews$ | async"
+      >
+        <!-- testimonial -->
+        <div
+          class="testimonial"
+          *ngIf="review.isActive === false && (authService.isAdmin$ | async)"
+        >
+          <div class="content">
+            <p class="description">
+              {{ review.message }}
+            </p>
+          </div>
+          <!-- /content -->
+          <div class="testimonial-pic">
+            <img
+              src="../../../assets/img/team/team1.jpg"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+          <!-- /testimonial-pic -->
+          <div class="testimonial-review">
+            <h5 class="testimonial-title">{{ review.fullName }}</h5>
+            <span>{{ review.occupation }}</span>
+          </div>
+          <div *ngIf="(authService.isAdmin$ | async) && !review.isActive">
+            <button class="btn btn-secondary" (click)="activeazaReview(review)">
+              Activeaza
+            </button>
+          </div>
+          <!-- /testimonial-review -->
+        </div>
+        <div class="testimonial" *ngIf="review.isActive">
+          <div class="content">
+            <p class="description">
+              {{ review.message }}
+            </p>
+          </div>
+          <!-- /content -->
+          <div class="testimonial-pic">
+            <img
+              src="../../../assets/img/team/faceDog.jpeg"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+          <!-- /testimonial-pic -->
+          <div class="testimonial-review">
+            <h5 class="testimonial-title">{{ review.fullName }}</h5>
+            <span>{{ review.occupation }}</span>
+          </div>
+
+          <!-- /testimonial-review -->
+        </div>
+      </div>
+    </div>
+    <!-- /testimonials -->
+  </div>
+  <nav aria-label="pagination" style="padding-top: 20px">
+    <ul class="pagination float-right">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">
+          Înapoi
+        </a>
+      </li>
+      <li
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        class="page-item"
+        [class.active]="currentPage === i + 1"
+      >
+        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)"> Înainte </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /col-md-12 -->
+</div>

@@ -1,0 +1,185 @@
+<h1 mat-dialog-title>Formular Adoptie</h1>
+<div mat-dialog-content>
+  <form [formGroup]="adoptForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nume<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="nume"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'nume') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'nume')"
+            class="invalid-feedback"
+          >
+            Nume este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Prenume<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="prenume"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'prenume') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'prenume')"
+            class="invalid-feedback"
+          >
+            Prenume este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Varsta<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            type="number"
+            formControlName="varsta"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'varsta') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'varsta')"
+            class="invalid-feedback"
+          >
+            Varsta este obligatorie și trebuie să aveți cel puțin 18 ani
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Profesie<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="profesie"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'profesie') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'profesie')"
+            class="invalid-feedback"
+          >
+            Profesie este obligatorie
+          </div>
+        </div>
+        <div class="form-group">
+          <label>CNP<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="cnp"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'cnp') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'cnp')"
+            class="invalid-feedback"
+          >
+            CNP este obligatoriu și trebuie să aibă 13 cifre
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nr. Membrii Familie<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            type="number"
+            formControlName="nrMembriiFamilie"
+            [ngClass]="{
+              'is-invalid': isFieldInvalid(adoptForm, 'nrMembriiFamilie')
+            }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'nrMembriiFamilie')"
+            class="invalid-feedback"
+          >
+            Acest câmp este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nr. Copii<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            type="number"
+            formControlName="nrCopii"
+            [ngClass]="{ 'is-invalid': isFieldInvalid(adoptForm, 'nrCopii') }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'nrCopii')"
+            class="invalid-feedback"
+          >
+            Acest câmp este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mai aveti animalute?<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="maiAvetiAnimalute"
+            [ngClass]="{
+              'is-invalid': isFieldInvalid(adoptForm, 'maiAvetiAnimalute')
+            }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'maiAvetiAnimalute')"
+            class="invalid-feedback"
+          >
+            Acest câmp este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tip locuinta<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="tipLocuinta"
+            [ngClass]="{
+              'is-invalid': isFieldInvalid(adoptForm, 'tipLocuinta')
+            }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'tipLocuinta')"
+            class="invalid-feedback"
+          >
+            Acest câmp este obligatoriu
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ati mai avut animale?<span class="required">*</span></label>
+          <input
+            class="form-control input-field"
+            matInput
+            formControlName="atiMaiAvutAnimale"
+            [ngClass]="{
+              'is-invalid': isFieldInvalid(adoptForm, 'atiMaiAvutAnimale')
+            }"
+          />
+          <div
+            *ngIf="isFieldInvalid(adoptForm, 'atiMaiAvutAnimale')"
+            class="invalid-feedback"
+          >
+            Acest câmp este obligatoriu
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      mat-dialog-actions
+      style="display: flex; gap: 10px; justify-content: center"
+    >
+      <button class="btn btn-primary" (click)="onCancel()">Anulează</button>
+      <button
+        class="btn btn-secondary"
+        type="submit"
+        [disabled]="adoptForm.invalid"
+      >
+        Trimite cerere
+      </button>
+    </div>
+  </form>
+</div>

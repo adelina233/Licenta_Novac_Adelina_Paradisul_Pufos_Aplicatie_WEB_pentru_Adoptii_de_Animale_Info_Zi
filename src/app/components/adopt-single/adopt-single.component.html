@@ -1,0 +1,90 @@
+<div class="page" *ngIf="adopt">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row bg-light-custom border-irregular1 block-padding">
+          <!-- image -->
+          <div class="col-lg-4 offset-lg-2">
+            <div class="col-md-12">
+              <a [href]="adopt.imageUrl" title="your caption here">
+                <img
+                  [src]="
+                    adopt.imageUrl || '../../../assets/img/adoption/default.jpg'
+                  "
+                  class="border-irregular1 img-fluid"
+                  alt="{{ adopt.name }}"
+                />
+              </a>
+            </div>
+            <!-- /col-md-12 -->
+            <!-- Repeat the above block for other images if you have multiple images -->
+          </div>
+          <!-- /col-md -->
+          <!-- adoption info  -->
+          <div
+            class="col-lg-4 res-margin mt-5 text-xs-center"
+            style="margin-left: 5%"
+          >
+            <h4><strong>Numele Animalului:</strong> {{ adopt.name }}</h4>
+            <div class="row">
+              <div class="col-sm-6">
+                <ul class="list-unstyled pet-adopt-info">
+                  <li class="h7">
+                    Gen: <span>{{ adopt.gender }}</span>
+                  </li>
+                  <li class="h7">
+                    Vârstă: <span>{{ adopt.age }} săptămâni</span>
+                  </li>
+                  <li class="h7">
+                    Talie: <span>{{ adopt.size }}</span>
+                  </li>
+                  <li class="h7">
+                    Specie: <span>{{ adopt.animalType }}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <ul class="list-unstyled pet-adopt-info">
+                  <li class="h7">
+                    Vaccinat:
+                    <span>{{ adopt.vaccinated ? "Da" : "Nu" }}</span>
+                  </li>
+
+                  <li class="h7">
+                    Descriere:
+                    <span>{{ adopt.description }}</span>
+                  </li>
+                  <li class="h7">
+                    Rasă: <span>{{ adopt.breed }}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- /div-->
+            </div>
+            <!-- /row-->
+
+            <!-- button -->
+            <a
+              class="btn btn-primary"
+              *ngIf="isAuthenticated()"
+              (click)="openAdoptFormDialog()"
+            >
+              Adoptă acum!</a
+            >
+          </div>
+          <!-- /col-md -->
+        </div>
+        <!-- /row-->
+        <div class="col-md-12 mt-5">
+          <p class="custom-link">
+            <a routerLink="/adopt">« Înapoi la galeria de adopții</a>
+          </p>
+        </div>
+        <!-- /col-md-->
+      </div>
+      <!-- /col-lg-->
+    </div>
+    <!-- /row-->
+  </div>
+  <!-- /container-->
+</div>

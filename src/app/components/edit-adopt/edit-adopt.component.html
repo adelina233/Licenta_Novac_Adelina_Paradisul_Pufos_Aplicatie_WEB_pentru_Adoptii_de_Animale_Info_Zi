@@ -1,0 +1,108 @@
+<div class="page pb-5">
+  <div class="container">
+    <div class="row">
+      <h1 mat-dialog-title>Editează detaliile adopției</h1>
+      <div mat-dialog-content>
+        <form [formGroup]="adoptForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Nume<span class="required">*</span></label>
+            <input
+              class="form-control input-field"
+              matInput
+              formControlName="name"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('name') }"
+            />
+            <div *ngIf="isFieldInvalid('name')" class="invalid-feedback">
+              Numele este obligatoriu.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Vârstă<span class="required">*</span></label>
+            <input
+              class="form-control input-field"
+              matInput
+              type="number"
+              formControlName="age"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('age') }"
+            />
+            <div *ngIf="isFieldInvalid('age')" class="invalid-feedback">
+              Vârsta este obligatorie și trebuie să fie un număr pozitiv.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Descriere<span class="required">*</span></label>
+            <textarea
+              class="form-control input-field"
+              matInput
+              formControlName="description"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('description') }"
+            ></textarea>
+            <div *ngIf="isFieldInvalid('description')" class="invalid-feedback">
+              Descrierea este obligatorie.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Gen<span class="required">*</span></label>
+            <input
+              class="form-control input-field"
+              matInput
+              formControlName="gender"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('gender') }"
+            />
+            <div *ngIf="isFieldInvalid('gender')" class="invalid-feedback">
+              Genul este obligatoriu.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Talie<span class="required">*</span></label>
+            <input
+              class="form-control input-field"
+              matInput
+              formControlName="size"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('size') }"
+            />
+            <div *ngIf="isFieldInvalid('size')" class="invalid-feedback">
+              Talia este obligatorie.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Vaccinat<span class="required">*</span></label>
+            <mat-select
+              class="form-control input-field"
+              formControlName="vaccinated"
+              [ngClass]="{ 'is-invalid': isFieldInvalid('vaccinated') }"
+            >
+              <mat-option [value]="true">Da</mat-option>
+              <mat-option [value]="false">Nu</mat-option>
+            </mat-select>
+            <div *ngIf="isFieldInvalid('vaccinated')" class="invalid-feedback">
+              Vaccinarea este obligatorie.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Imagine<span class="required">*</span></label>
+            <input
+              class="form-control input-field"
+              type="file"
+              (change)="onFileSelected($event)"
+            />
+            <div class="invalid-feedback">Imaginea este obligatorie.</div>
+          </div>
+
+          <div mat-dialog-actions>
+            <button class="btn btn-primary" (click)="onCancel()">
+              Anulează
+            </button>
+            <button class="btn btn-secondary" type="submit">Salvează</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

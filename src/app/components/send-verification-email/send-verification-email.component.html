@@ -1,0 +1,35 @@
+<div class="mat-display-table">
+  <div class="mat-display-table-cell">
+    <div class="auth-block">
+      <h3>Thank You for Registering</h3>
+      <div class="form-group" *ngIf="authService.userData as user">
+        <p class="mat-text-center">
+          We have sent a confirmation email to <strong>{{ user.email }}</strong
+          >.
+        </p>
+        <p class="mat-text-center">
+          Please check your email and click on the link to verify your email
+          address.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <button
+          mat-button
+          color="warn"
+          (click)="authService.SendVerificationMail()"
+        >
+          <mat-icon>refresh</mat-icon>
+          Resend Verification Email
+        </button>
+      </div>
+    </div>
+    <div class="redirect-to-login">
+      <span
+        >Go back to?<span class="redirect" routerLink="/login"
+          >Sign in</span
+        ></span
+      >
+    </div>
+  </div>
+</div>

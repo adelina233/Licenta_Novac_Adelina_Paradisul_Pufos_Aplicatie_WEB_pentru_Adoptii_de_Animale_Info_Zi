@@ -1,0 +1,33 @@
+<div *ngIf="adopt$ | async as adopt">
+  <div class="adopt-card">
+    <div style="height: 600px" class="card bg-light-custom">
+      <div class="thumbnail text-center">
+        <!-- Image -->
+        <img
+          [src]="adopt.imageUrl || '../../../assets/img/adoption/default.jpg'"
+          class="border-irregular1 img-fluid"
+          style="height: 230px"
+          alt="{{ adopt.name }}"
+        />
+        <div class="caption-adoption">
+          <h6 class="adoption-header">{{ adopt.name }}</h6>
+          <ul class="list-unstyled">
+            <li><strong>Gen:</strong> {{ adopt.gender }}</li>
+            <li>
+              <strong>Vaccinat: </strong>
+              {{ adopt.vaccinated ? "Yes" : "No" }}
+            </li>
+            <li><strong>Vârstă:</strong> {{ adopt.age }} years</li>
+          </ul>
+          <div class="text-center">
+            <a
+              [routerLink]="['/adopt-single', adopt.id]"
+              class="btn btn-primary"
+              >Mai Multe informații</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

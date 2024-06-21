@@ -1,0 +1,198 @@
+<div
+  id="slider"
+  style="width: 1200px; height: 800px; margin: 0 auto; margin-bottom: 0px"
+>
+  <!-- Slide 2 -->
+  <div
+    class="ls-slide"
+    data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;"
+  >
+    <!-- bg image  -->
+    <img
+      src="../../../assets/img/shelter.jpg"
+      class="ls-bg"
+      style="width: -webkit-fill-available"
+      alt=""
+    />
+  </div>
+  <!-- /slider -->
+  <!-- ==== Page Content ==== -->
+  <!-- Section services -->
+
+  <!-- / Section Ends -->
+
+  <!-- SVG effect -->
+
+  <!-- / Section Ends -->
+  <!-- Section About Us -->
+
+  <app-about id="about" class="dog-bg2"></app-about>
+  <!-- / Section Ends -->
+  <!-- Section: Gallery -->
+  <!-- <app-gallery></app-gallery> -->
+  <!-- / Section Ends -->
+
+  <!-- Section Call to action -->
+
+  <!--/call-to-action --><!-- Section Adopt -->
+  <section id="adopt" class="paws-house-bg1 bg-light">
+    <div class="container">
+      <div class="section-heading text-center">
+        <h2>Adoptă un animal</h2>
+      </div>
+      <!-- /Section-heading -->
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <h3>Găsește-ți un nou prieten!</h3>
+        <p>
+          Dacă ești în căutarea unui nou prieten animal, adăpostul nostru este
+          locul!
+        </p>
+      </div>
+      <!-- First row: Adopt a pet -->
+      <div class="row mt-5">
+        <ng-container *ngFor="let adopt of adoptList">
+          <div class="adopt-card col-md-6 col-xl-3 res-margin">
+            <div class="card bg-light-custom" style="height: 600px">
+              <div class="thumbnail text-center">
+                <!-- Image -->
+                <img
+                  [src]="
+                    adopt.imageUrl || '../../../assets/img/adoption/default.jpg'
+                  "
+                  style="height: 230px"
+                  class="border-irregular1 img-fluid"
+                  alt="{{ adopt.name }}"
+                />
+                <!-- Name -->
+                <div class="caption-adoption">
+                  <h6 class="adoption-header">{{ adopt.name }}</h6>
+                  <!-- List -->
+                  <ul class="list-unstyled">
+                    <li><strong>Gen:</strong> {{ adopt.gender }}</li>
+                    <li>
+                      <strong>Vaccinat: </strong>
+                      {{ adopt.vaccinated ? "Yes" : "No" }}
+                    </li>
+                    <li><strong>Vârstă:</strong> {{ adopt.age }} săptămâni</li>
+                  </ul>
+                  <!-- Buttons -->
+                  <div class="text-center">
+                    <a
+                      [routerLink]="['/adopt-single', adopt.id]"
+                      class="btn btn-primary"
+                    >
+                    Mai multe informații
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- /thumbnail -->
+            </div>
+            <!-- /card -->
+          </div>
+          <!-- /adopt-card -->
+        </ng-container>
+      </div>
+      <!-- /row -->
+      <div class="text-center mt-5">
+        <a routerLink="/adopt" class="btn btn-secondary btn-lg"
+          >Vezi mai multe animale</a
+        >
+      </div>
+    </div>
+    <!-- /container -->
+  </section>
+  <app-reviews></app-reviews>
+
+  <!-- Section Contact -->
+  <section id="contact" class="dog-bg3">
+    <div class="container">
+      <div class="section-heading text-center">
+        <h2>Contact </h2>
+      </div>
+      <!-- /Section-heading -->
+    </div>
+    <!-- /container -->
+    <div class="container">
+      <div class="row">
+        <!-- contact info -->
+
+        <app-contact></app-contact>
+        <div class="col-lg-7">
+          <!-- map-->
+        </div>
+        <!-- /col-lg-->
+      </div>
+      <!-- /row-->
+      <div class="row res-margin mt-5">
+        <div class="col-lg-6 mt-5">
+          <div class="contact-icon">
+            <!---icon-->
+            <i class="fa fa-envelope top-icon"></i>
+            <!-- contact-icon info-->
+            <div class="contact-icon-info">
+              <h5>Trimite-ne email</h5>
+              <p class="h7">
+                <a href="mailto:paradisulpufos@gmail.com"
+                  >paradisulpufos@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /contact-icon-->
+        <div class="col-lg-6 mt-5">
+          <div class="contact-icon">
+            <!---icon-->
+            <i class="fa fa-map-marker top-icon"></i>
+            <!-- contact-icon info-->
+            <div class="contact-icon-info">
+              <h5>Vizitează-ne</h5>
+              <p class="h7">Sector 3</p>
+            </div>
+          </div>
+        </div>
+        <!-- /contact-icon-->
+        <div class="col-lg-6 mt-5">
+          <div class="contact-icon">
+            <!---icon-->
+            <i class="fa fa-phone top-icon"></i>
+            <!-- contact-icon info-->
+            <div class="contact-icon-info">
+              <h5>Contactează-ne</h5>
+              <p class="h7">+40 759 356 009</p>
+            </div>
+          </div>
+        </div>
+        <!-- /contact-icon-->
+        <div class="col-lg-6 mt-5">
+          <div class="contact-icon">
+            <!---icon-->
+            <i class="fa fa-heart top-icon"></i>
+            <!-- contact-icon info-->
+            <div class="contact-icon-info">
+              <h5>Urmărește-ne pe Social Media</h5>
+              <ul class="social-media">
+                <li>
+                  <a href="#"><i class="fab fa-facebook-square"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-pinterest"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /contact-icon-->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </section>
+</div>

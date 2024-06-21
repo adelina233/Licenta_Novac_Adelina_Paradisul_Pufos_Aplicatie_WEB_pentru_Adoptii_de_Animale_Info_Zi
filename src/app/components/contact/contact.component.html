@@ -1,0 +1,102 @@
+<div class="page pb-5">
+  <div class="container">
+    <div class="row">
+      <!-- contact-info-->
+      <div class="contact-info col-lg-5">
+        <h4>Trimite-ne un mesaj!</h4>
+        <!-- Form Starts -->
+        <form [formGroup]="form" id="contact_form">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nume<span class="required">*</span></label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control input-field"
+                  required=""
+                />
+              </div>
+              <div class="col-md-6">
+                <label>Adresă de email <span class="required">*</span></label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control input-field"
+                  required=""
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label>Subiect</label>
+                <input
+                  type="text"
+                  formControlName="subject"
+                  class="form-control input-field"
+                />
+              </div>
+              <div class="col-md-12">
+                <label>Mesaj<span class="required">*</span></label>
+                <textarea
+                  formControlName="message"
+                  id="message"
+                  class="textarea-field form-control"
+                  rows="3"
+                  required=""
+                ></textarea>
+              </div>
+            </div>
+            <button
+              type="submit"
+              id="submit_btn"
+              value="Submit"
+              class="btn btn-primary"
+              (click)="send()"
+            >
+              Trimite
+            </button>
+          </div>
+          <!-- /form-group-->
+          <!-- Contact results -->
+          <div id="contact_results"></div>
+        </form>
+        <!-- /contact)form-->
+      </div>
+      <!-- /contact-info-->
+      <div class="col-lg-6 offset-lg-1 h-50 card bg-secondary res-margin">
+        <div class="contact-info text-light">
+          <!-- contact-info-->
+          <div class="text-light">
+            <h5>Informații</h5>
+            <p>Îți răspundem cât de repede putem!</p>
+            <!-- contact icons-->
+            <ul class="list-unstyled mt-5 list-contact">
+              <li class="h7">
+                <i class="fa fa-envelope margin-icon"></i
+                ><a href="mailto:paradisulpufos@gmail.com"
+                  >paradisulpufos@gmail.com</a
+                >
+              </li>
+              <li class="h7">
+                <i class="fa fa-phone margin-icon"></i>
+                +40 759 356 009
+              </li>
+              <li class="h7">
+                <i class="fa fa-map-marker margin-icon"></i>Sector 3
+              </li>
+            </ul>
+            <!-- /list-->
+          </div>
+          <!-- /text-light -->
+        </div>
+        <!-- /contact-info-->
+      </div>
+      <!-- /col-lg-->
+    </div>
+    <!-- /row-->
+  </div>
+  <!-- /container -->
+  <!-- map-->
+</div>
+<!-- <div id="map-canvas" class="mt-5" data-aos="fade-down"></div> -->

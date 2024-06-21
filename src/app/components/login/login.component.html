@@ -1,0 +1,70 @@
+<div
+  class="page pb-0"
+  style="display: flex; align-items: center; margin-bottom: 120px"
+>
+  <div class="container">
+    <div class="row" style="justify-content: center">
+      <!-- contact-info-->
+      <div class="contact-info col-lg-5">
+        <h4>Intră în cont</h4>
+        <!-- Form Starts -->
+        <div id="contact_form">
+          <div class="form-group">
+            <div class="col">
+              <div class="col-md-6">
+                <label>Adresă Email <span class="required">*</span></label>
+                <input
+                  type="email"
+                  name="email"
+                  [(ngModel)]="loginData.email"
+                  class="form-control input-field"
+                  required=""
+                />
+              </div>
+              <div class="col-md-6">
+                <label>Parolă<span class="required">*</span></label>
+                <input
+                  type="password"
+                  name="password"
+                  [(ngModel)]="loginData.password"
+                  class="form-control input-field"
+                  required=""
+                />
+              </div>
+
+              <p
+                style="
+                  text-align: left !important;
+                  padding-top: 1rem !important;
+                "
+              >
+                Nu ai cont?
+                <a routerLink="/register" style="color: #f9575c"> Cont nou </a>
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              id="submit_btn"
+              value="Submit"
+              class="btn btn-primary"
+              (click)="onLogin()"
+            >
+            Conectează-te
+            </button>
+          </div>
+          <!-- /form-group-->
+          <!-- Contact results -->
+          <div id="contact_results"></div>
+        </div>
+        <!-- /contact)form-->
+      </div>
+
+      <!-- /col-lg-->
+    </div>
+    <!-- /row-->
+  </div>
+  <!-- /container -->
+  <!-- map-->
+  <div id="map-canvas" class="mt-5" data-aos="fade-down"></div>
+</div>

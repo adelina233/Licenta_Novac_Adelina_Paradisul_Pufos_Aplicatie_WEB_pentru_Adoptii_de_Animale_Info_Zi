@@ -1,0 +1,22 @@
+#chatButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+}
+
+#iframeContainer {
+  position: fixed;
+  top: 60%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+#iframeContainer iframe {
+  width: 350px;
+  height: 430px;
+}
+.iframe #document div b-agent-demo_powered_by {
+  display: none;
+}

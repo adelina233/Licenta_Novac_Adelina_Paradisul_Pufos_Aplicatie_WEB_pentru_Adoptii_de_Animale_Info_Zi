@@ -1,0 +1,60 @@
+<div>
+  <div class="container" style="margin-top: 50px">
+    <h1>Cereri de adopție în așteptare</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Vârstă</th>
+            <th>Profesie</th>
+            <th>CNP</th>
+            <th>Nr. Membrii Familie</th>
+            <th>Nr. Copii</th>
+            <th>Mai aveti animale</th>
+            <th>Tip locuinta</th>
+            <th>Ati mai avut animale</th>
+            <th>ID Animal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of pendingRequests$ | async">
+            <td>{{ request.nume }}</td>
+            <td>{{ request.prenume }}</td>
+            <td>{{ request.varsta }}</td>
+            <td>{{ request.profesie }}</td>
+            <td>{{ request.cnp }}</td>
+            <td>{{ request.nrMembriiFamilie }}</td>
+            <td>{{ request.nrCopii }}</td>
+            <td>{{ request.maiAvetiAnimalute }}</td>
+            <td>{{ request.tipLocuinta }}</td>
+            <td>{{ request.atiMaiAvutAnimale }}</td>
+            <td>
+              <button
+                class="btn btn-secondary"
+                (click)="openAnimalDetailsDialog(request.animalId)"
+              >
+                {{ request.animalId }}
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-success"
+                (click)="completeAdoption(request)"
+              >
+                Adoptie Completa
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="cancelAdoption(request)">
+                Anuleaza
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="map-canvas"></div>
+  </div>
+</div>
